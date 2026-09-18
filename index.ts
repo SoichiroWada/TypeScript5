@@ -1,4 +1,9 @@
-const firstName = 'mario'
-const age = 30
+// const firstName = 'mario'
+// const age = 30
 
-console.log(firstName, age)
+let age: number = 44
+
+age = 55;
+
+console.log(age)
+// console.log(firstName, age)

@@ -1,0 +1,10 @@
+# Dependency directories (installed via npm)
+node_modules/
+
+# Optional: Ignore compiled JavaScript files if you only want to push source code
+# dist/
+# out/
+
+# Optional: Ignore local environment variables or logs
+*.log
+.env

@@ -246,4 +246,4 @@ let person = {
 // person.id = 3
 person.name = 'bowser';
 const score = person.score; // infers number type
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index2.js.map

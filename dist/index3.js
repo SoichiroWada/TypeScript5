@@ -18,7 +18,13 @@ const personThree = {
 function printUser(user) {
     console.log(user.id, user.email, user.firstName);
 }
-// printUser(personOne) --> not allowed
+function printUser2(user) {
+    console.log(user.id, user.firstName);
+}
+// printUser(personOne)// --> not allowed
 printUser(personTwo);
-// printUser(personThree) --> not allowed
+// printUser(personThree)// --> not allowed
+printUser2(personOne);
+printUser2(personTwo);
+// printUser2(personThree)// --> not allowed
 //# sourceMappingURL=index3.js.map

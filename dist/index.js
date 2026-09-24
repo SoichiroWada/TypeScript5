@@ -1,9 +1,7 @@
-"use strict";
 //--------------------
 // CSV Writer Project
 //--------------------
-Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = require("fs");
+import { appendFileSync } from 'node:fs';
 class CSVWriter {
     columns;
     constructor(columns) {
@@ -13,6 +11,11 @@ class CSVWriter {
         console.log("this.csv:", this.csv);
     }
     csv;
+    save(filename) {
+        appendFileSync(filename, this.csv);
+        this.csv = '\n';
+        console.log('file saved to', filename);
+    }
     addRows(values) {
         console.log("values:", values);
         let rows = values.map((v) => this.formatRow(v));
@@ -34,4 +37,5 @@ writer.addRows([
     { id: 2, amount: 22, to: 'kintaro', notes: 'special minilary operation' },
     { id: 3, amount: 35, to: 'bonbigaso', notes: 'repair my car' },
 ]);
+writer.save('./data/payments.csv');
 //# sourceMappingURL=index.js.map

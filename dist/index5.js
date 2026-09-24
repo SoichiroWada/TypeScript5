@@ -1,8 +1,6 @@
-"use strict";
 //------------------
 // access modifiers
 //------------------
-Object.defineProperty(exports, "__esModule", { value: true });
 class Pizza {
     title;
     price;
@@ -29,5 +27,6 @@ pizza.selectBase('garlic');
 pizza.addTopping('mushrooms');
 pizza.addTopping('olives');
 console.log(pizza);
+export {};
 // console.log(pizza.title, pizza.price, pizza.toppings)
 //# sourceMappingURL=index5.js.map

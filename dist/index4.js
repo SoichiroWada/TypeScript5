@@ -1,8 +1,6 @@
-"use strict";
 //-------------
 // classes 101
 //-------------
-Object.defineProperty(exports, "__esModule", { value: true });
 class Pizza {
     constructor(title, price) {
         this.title = title;
@@ -29,4 +27,5 @@ pizza.addTopping('olives');
 pizza.addTopping('pineapples');
 pizza.selectBase('square');
 console.log(pizza);
+export {};
 //# sourceMappingURL=index4.js.map

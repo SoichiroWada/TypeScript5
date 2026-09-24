@@ -1,8 +1,6 @@
-"use strict";
 //------------------------
 // extending type aliases
 //------------------------
-Object.defineProperty(exports, "__esModule", { value: true });
 const personOne = {
     id: 1,
     firstName: 'mario',
@@ -26,5 +24,6 @@ printUser(personTwo);
 // printUser(personThree)// --> not allowed
 printUser2(personOne);
 printUser2(personTwo);
+export {};
 // printUser2(personThree)// --> not allowed
 //# sourceMappingURL=index3.js.map

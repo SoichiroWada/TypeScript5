@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class MenuItem {
     title;
     price;
@@ -51,4 +49,5 @@ function printFormatted(val) {
     console.log(val.format());
 }
 printFormatted(pizza);
+export {};
 //# sourceMappingURL=index10.js.map

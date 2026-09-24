@@ -1,8 +1,6 @@
-"use strict";
 //----------------------
 // extending interfaces
 //----------------------
-Object.defineProperty(exports, "__esModule", { value: true });
 const user = {
     id: 1,
     format() {
@@ -29,4 +27,5 @@ printFormatted(user);
 printFormatted(bill);
 // printBill(user) --> not allowed
 printBill(bill);
+export {};
 //# sourceMappingURL=index2.js.map

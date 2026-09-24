@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class MenuItem {
     title;
     price;
@@ -53,5 +51,6 @@ function printMenuItem(pizza) {
 // }
 printMenuItem(pizzaOne);
 printMenuItem(pizzaTwo);
+export {};
 // printPizzaDetails(pizzaTwo, 'thick', 'large', 'pineapple')
 //# sourceMappingURL=index7.js.map

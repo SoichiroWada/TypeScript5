@@ -2,7 +2,7 @@
 // CSV Writer Project
 //--------------------
 
-import { appendFileSync } from 'fs'
+import { appendFileSync } from 'node:fs'
 
 interface Payment {
     id: number
@@ -22,6 +22,13 @@ class CSVWriter {
 
     private csv: string
 
+    save(filename: string): void {
+        appendFileSync(filename, this.csv)
+        this.csv = '\n'
+
+        console.log('file saved to', filename)
+    }
+
     addRows(values: Payment[]): void {
         console.log("values:", values)
         let rows = values.map((v) => this.formatRow(v))
@@ -32,16 +39,18 @@ class CSVWriter {
 
     private formatRow(object: Payment): string {
         const text = this.columns.map((col) => object[col]).join(',')
-        console.log("text:",text)
+        console.log("text:", text)
         return text
         // return this.columns.map((col) => object[col]).join(',')
     }
 }
 
 const writer = new CSVWriter(['id', 'amount', 'to', 'notes'])
-console.log("writer:",writer)
+console.log("writer:", writer)
 writer.addRows([
     { id: 1, amount: 11, to: 'yoshi', notes: 'for design work' },
     { id: 2, amount: 22, to: 'kintaro', notes: 'special minilary operation' },
     { id: 3, amount: 35, to: 'bonbigaso', notes: 'repair my car' },
 ])
+
+writer.save('./data/payments.csv')

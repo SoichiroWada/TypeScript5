@@ -1,8 +1,6 @@
-"use strict";
 //---------------------
 // function signatures
 //---------------------
-Object.defineProperty(exports, "__esModule", { value: true });
 function addTwoNumber(a, b) {
     return a + b;
 }
@@ -246,4 +244,5 @@ let person = {
 // person.id = 3
 person.name = 'bowser';
 const score = person.score; // infers number type
+export {};
 //# sourceMappingURL=index1.js.map

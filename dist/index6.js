@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class Pizza {
     title;
     price;
@@ -34,4 +32,5 @@ function addMushroomsToPizzas(pizzas) {
 }
 addMushroomsToPizzas([pizzaOne, pizzaTwo, pizzaThree]);
 console.log(pizzaOne, pizzaTwo, pizzaThree);
+export {};
 //# sourceMappingURL=index6.js.map

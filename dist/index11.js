@@ -8,20 +8,29 @@ class CSVWriter {
     constructor(columns) {
         this.columns = columns;
         this.csv = this.columns.join(',') + '\n';
+        console.log("this.columns:", this.columns);
+        console.log("this.csv:", this.csv);
     }
     csv;
     addRows(values) {
+        console.log("values:", values);
         let rows = values.map((v) => this.formatRow(v));
+        console.log("rows:", rows);
         this.csv += rows.join('\n');
-        console.log(this.csv);
+        console.log("this.csv in addRows:", this.csv);
     }
-    formatRow(p) {
-        return this.columns.map((col) => p[col]).join(',');
+    formatRow(object) {
+        const text = this.columns.map((col) => object[col]).join(',');
+        console.log("text:", text);
+        return text;
+        // return this.columns.map((col) => object[col]).join(',')
     }
 }
 const writer = new CSVWriter(['id', 'amount', 'to', 'notes']);
+console.log("writer:", writer);
 writer.addRows([
-    { id: 1, amount: 50, to: 'yoshi', notes: 'for design work' },
-    { id: 2, amount: 50, to: 'yoshi', notes: 'for design work' },
+    { id: 1, amount: 11, to: 'yoshi', notes: 'for design work' },
+    { id: 2, amount: 22, to: 'kintaro', notes: 'special minilary operation' },
+    { id: 3, amount: 35, to: 'bonbigaso', notes: 'repair my car' },
 ]);
 //# sourceMappingURL=index11.js.map

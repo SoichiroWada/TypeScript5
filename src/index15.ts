@@ -10,7 +10,7 @@ class DataCollection<T> {
         console.log('randomNumber:', randomNumber)
         console.log('this.data.length:', this.data.length)
         const i = Math.floor(randomNumber * this.data.length)
-        console.log('randomNumber * this.data.length):', randomNumber * this.data.length))
+        console.log('randomNumber * this.data.length):', randomNumber * this.data.length)
         console.log('i:', i)
 
         return this.data[i]

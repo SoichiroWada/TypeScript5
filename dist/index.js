@@ -1,41 +1,39 @@
-//--------------------
-// CSV Writer Project
-//--------------------
-import { appendFileSync } from 'node:fs';
-class CSVWriter {
-    columns;
-    constructor(columns) {
-        this.columns = columns;
-        this.csv = this.columns.join(',') + '\n';
-        console.log("this.columns:", this.columns);
-        console.log("this.csv:", this.csv);
-    }
-    csv;
-    save(filename) {
-        appendFileSync(filename, this.csv);
-        this.csv = '\n';
-        console.log('file saved to', filename);
-    }
-    addRows(values) {
-        console.log("values:", values);
-        let rows = values.map((v) => this.formatRow(v));
-        console.log("rows:", rows);
-        this.csv += rows.join('\n');
-        console.log("this.csv in addRows:", this.csv);
-    }
-    formatRow(object) {
-        const text = this.columns.map((col) => object[col]).join(',');
-        console.log("text:", text);
-        return text;
-        // return this.columns.map((col) => object[col]).join(',')
-    }
+//--------------
+// Generics 101
+//--------------
+function logAndReturnString(val) {
+    console.log(val);
+    return val;
 }
-const writer = new CSVWriter(['id', 'amount', 'to', 'notes']);
-console.log("writer:", writer);
-writer.addRows([
-    { id: 1, amount: 11, to: 'yoshi', notes: 'for design work' },
-    { id: 2, amount: 22, to: 'kintaro', notes: 'special minilary operation' },
-    { id: 3, amount: 35, to: 'bonbigaso', notes: 'repair my car' },
-]);
-writer.save('./data/payments.csv');
+function logAndReturnNumber(val) {
+    console.log(val);
+    return val;
+}
+function logAndReturnBoolean(val) {
+    console.log(val);
+    return val;
+}
+function logAndReturnValue(val) {
+    console.log(val);
+    return val;
+}
+const resultOne = logAndReturnValue('mario');
+const resultTwo = logAndReturnValue(25);
+// example 2
+function getRandomArrayValue(values) {
+    const i = Math.floor(Math.random() * values.length);
+    return values[i];
+}
+const users = [
+    { name: 'mario', score: 100 },
+    { name: 'peach', score: 150 },
+    { name: 'wario', score: 75 },
+    { name: 'yoshi', score: 90 },
+];
+// const users: User[] = []
+const randomUser = getRandomArrayValue(users);
+if (randomUser) {
+    console.log(randomUser.name);
+}
+export {};
 //# sourceMappingURL=index.js.map

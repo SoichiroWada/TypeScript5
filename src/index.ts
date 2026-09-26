@@ -1,56 +1,51 @@
-//--------------------
-// CSV Writer Project
-//--------------------
+//--------------
+// Generics 101
+//--------------
 
-import { appendFileSync } from 'node:fs'
-
-interface Payment {
-    id: number
-    amount: number
-    to: string
-    notes: string
+function logAndReturnString(val: string): string {
+	console.log(val)
+	return val
+}
+function logAndReturnNumber(val: number): number {
+	console.log(val)
+	return val
+}
+function logAndReturnBoolean(val: boolean): boolean {
+	console.log(val)
+	return val
 }
 
-type PaymentColumns = ('id' | 'amount' | 'to' | 'notes')[]
-
-class CSVWriter {
-    constructor(private columns: PaymentColumns) {
-        this.csv = this.columns.join(',') + '\n'
-        console.log("this.columns:", this.columns)
-        console.log("this.csv:", this.csv)
-    }
-
-    private csv: string
-
-    save(filename: string): void {
-        appendFileSync(filename, this.csv)
-        this.csv = '\n'
-
-        console.log('file saved to', filename)
-    }
-
-    addRows(values: Payment[]): void {
-        console.log("values:", values)
-        let rows = values.map((v) => this.formatRow(v))
-        console.log("rows:", rows)
-        this.csv += rows.join('\n')
-        console.log("this.csv in addRows:", this.csv)
-    }
-
-    private formatRow(object: Payment): string {
-        const text = this.columns.map((col) => object[col]).join(',')
-        console.log("text:", text)
-        return text
-        // return this.columns.map((col) => object[col]).join(',')
-    }
+function logAndReturnValue<T>(val: T): T {
+	console.log(val)
+	return val
 }
 
-const writer = new CSVWriter(['id', 'amount', 'to', 'notes'])
-console.log("writer:", writer)
-writer.addRows([
-    { id: 1, amount: 11, to: 'yoshi', notes: 'for design work' },
-    { id: 2, amount: 22, to: 'kintaro', notes: 'special minilary operation' },
-    { id: 3, amount: 35, to: 'bonbigaso', notes: 'repair my car' },
-])
+const resultOne = logAndReturnValue<string>('mario')
+const resultTwo = logAndReturnValue<number>(25)
 
-writer.save('./data/payments.csv')
+// example 2
+
+function getRandomArrayValue<T>(values: T[]): T | undefined {
+	const i = Math.floor(Math.random() * values.length)
+	return values[i]
+}
+
+interface User {
+	name: string
+	score: number
+}
+
+const users: User[] = [
+	{ name: 'mario', score: 100 },
+	{ name: 'peach', score: 150 },
+	{ name: 'wario', score: 75 },
+	{ name: 'yoshi', score: 90 },
+]
+
+// const users: User[] = []
+
+const randomUser = getRandomArrayValue<User>(users)
+
+if (randomUser) {
+	console.log(randomUser.name)
+}

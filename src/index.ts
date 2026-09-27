@@ -7,6 +7,8 @@ import { appendFileSync } from 'fs'
 export class CSVWriter<T> {
 	constructor(private columns: (keyof T)[]) {
 		this.csv = this.columns.join(',') + '\n'
+		console.log('csv:', this.csv)
+		console.log('columns:', columns)
 	}
 
 	private csv: string

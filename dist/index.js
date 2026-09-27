@@ -7,6 +7,8 @@ export class CSVWriter {
     constructor(columns) {
         this.columns = columns;
         this.csv = this.columns.join(',') + '\n';
+        console.log('csv:', this.csv);
+        console.log('columns:', columns);
     }
     csv;
     save(filename) {

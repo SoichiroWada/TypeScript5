@@ -1,51 +1,30 @@
-//--------------
-// Generics 101
-//--------------
+//-----------------------
+// CSV Writer - Refactor
+//-----------------------
 
-function logAndReturnString(val: string): string {
-	console.log(val)
-	return val
-}
-function logAndReturnNumber(val: number): number {
-	console.log(val)
-	return val
-}
-function logAndReturnBoolean(val: boolean): boolean {
-	console.log(val)
-	return val
-}
+import { appendFileSync } from 'fs'
 
-function logAndReturnValue<T>(val: T): T {
-	console.log(val)
-	return val
-}
+export class CSVWriter<T> {
+	constructor(private columns: (keyof T)[]) {
+		this.csv = this.columns.join(',') + '\n'
+	}
 
-const resultOne = logAndReturnValue<string>('mario')
-const resultTwo = logAndReturnValue<number>(25)
+	private csv: string
 
-// example 2
+	save(filename: string): void {
+		appendFileSync(filename, this.csv)
+		this.csv = '\n'
 
-function getRandomArrayValue<T>(values: T[]): T | undefined {
-	const i = Math.floor(Math.random() * values.length)
-	return values[i]
-}
+		console.log('file saved to', filename)
+	}
 
-interface User {
-	name: string
-	score: number
-}
+	addRows(values: T[]): void {
+		let rows = values.map((v) => this.formatRow(v))
 
-const users: User[] = [
-	{ name: 'mario', score: 100 },
-	{ name: 'peach', score: 150 },
-	{ name: 'wario', score: 75 },
-	{ name: 'yoshi', score: 90 },
-]
+		this.csv += rows.join('\n')
+	}
 
-// const users: User[] = []
-
-const randomUser = getRandomArrayValue<User>(users)
-
-if (randomUser) {
-	console.log(randomUser.name)
+	private formatRow(values: T): string {
+		return this.columns.map((col) => values[col]).join(',')
+	}
 }
